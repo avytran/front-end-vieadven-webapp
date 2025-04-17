@@ -1,19 +1,16 @@
 import React, { useState } from 'react';
 import './Challenge.css';
+import questionsData from '../../mocks/data/questions.json';
 
 export const Challenge = () => {
+    const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [selectedOption, setSelectedOption] = useState(null);
     const [result, setResult] = useState(null);
     const [progress, setProgress] = useState(0);
 
-    const options = [
-        { id: 1, color: '#FFD700' },
-        { id: 2, color: '#32CD32' },
-        { id: 3, color: '#00CED1' },
-        { id: 4, color: '#FF69B4' },
-    ];
+    const currentQuestion = questionsData[currentQuestionIndex];
 
-    const correctAnswer = 3;
+    const colors = ['#FFD700', '#32CD32', '#00CED1', '#FF69B4'];
 
     const handleOptionClick = (id) => {
         if (result) return;
@@ -22,21 +19,38 @@ export const Challenge = () => {
 
     const handleChoose = () => {
         if (!selectedOption) return;
-        const isCorrect = selectedOption === correctAnswer;
+        const isCorrect = selectedOption === currentQuestion.correctAnswer;
         setResult(isCorrect ? 'correct' : 'incorrect');
-        setProgress(progress + 25);
+        if (isCorrect) {
+            setSelectedOption(null);
+        } else {
+            setSelectedOption(currentQuestion.correctAnswer);
+        }
+        const progressPercent = (currentQuestionIndex / questionsData.length) * 100;
+        setProgress(progressPercent);
     };
 
     const handleSkip = () => {
-        setSelectedOption(null);
-        setResult(null);
-        setProgress(progress + 25);
+        if (currentQuestionIndex < questionsData.length - 1) {
+            setCurrentQuestionIndex(currentQuestionIndex + 1);
+            setSelectedOption(null);
+            setResult(null);
+            const progressPercent = ((currentQuestionIndex + 1) / questionsData.length) * 100;
+            setProgress(progressPercent);
+        }
     };
 
     const handleNext = () => {
-        setSelectedOption(null);
-        setResult(null);
-        setProgress(progress + 25);
+        if (currentQuestionIndex < questionsData.length - 1) {
+            setCurrentQuestionIndex(currentQuestionIndex + 1);
+            setSelectedOption(null);
+            setResult(null);
+            const progressPercent = ((currentQuestionIndex + 1) / questionsData.length) * 100;
+            setProgress(progressPercent);
+        } else {
+            console.log("Quiz completed!");
+            setProgress(100);
+        }
     };
 
     const handleClose = () => {
@@ -70,27 +84,37 @@ export const Challenge = () => {
                 </button>
             </div>
 
-            {/* Placeholder cho câu hỏi */}
-            <div className="question-placeholder">Đèo nào nổi tiếng ở Hà Giang?</div>
+            <div className="question-placeholder">
+                {currentQuestion.question}
+            </div>
 
-            {/* Các ô lựa chọn */}
             <div className="options-grid">
-                {options.map((option) => (
+                {currentQuestion.options.map((option, index) => (
                     <div
                         key={option.id}
-                        className={`option-box ${selectedOption === option.id ? 'selected' : ''
-                            } ${result && option.id === correctAnswer ? 'correct' : ''
-                            } ${result && selectedOption === option.id && !result.includes('correct') ? 'incorrect' : ''
-                            }`}
-                        style={{ backgroundColor: result ? (option.id === correctAnswer ? '#00CED1' : '#808080') : option.color }}
+                        className={`option-box ${selectedOption === option.id ? 'selected' : ''}
+                            ${result && option.id === currentQuestion.correctAnswer ? 'correct' : ''}
+                            ${result && selectedOption === option.id && option.id !== currentQuestion.correctAnswer ? 'incorrect' : ''}`}
+                        style={{
+                            backgroundColor: result
+                                ? (option.id === currentQuestion.correctAnswer ? '#00CED1' : '#808080')
+                                : colors[index]
+                        }}
                         onClick={() => handleOptionClick(option.id)}
-                    ></div>
+                    >
+                        {option.text}
+                    </div>
                 ))}
             </div>
 
             {result && (
                 <div className={`result-message ${result}`}>
                     {result === 'correct' ? 'Đúng rồi!' : 'Đáp án đúng:'}
+                    {result !== 'correct' && (
+                        <span className="correct-answer">
+                            {" " + currentQuestion.options.find(opt => opt.id === currentQuestion.correctAnswer).text}
+                        </span>
+                    )}
                 </div>
             )}
 
@@ -109,7 +133,7 @@ export const Challenge = () => {
                         className={`next-button ${result}`}
                         onClick={handleNext}
                     >
-                        TIẾP TỤC
+                        {currentQuestionIndex < questionsData.length - 1 ? 'TIẾP TỤC' : 'KẾT THÚC'}
                     </button>
                 ) : (
                     <button

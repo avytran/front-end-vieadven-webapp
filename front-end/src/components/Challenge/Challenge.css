@@ -94,16 +94,18 @@ html, body {
 
 .options-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
-    width: 80%; 
-    left: 50%; 
+    width: 80%;
+    max-width: 800px;
+    margin: 0 auto;
+    justify-content: center;
 }
 
 .option-box {
-    width: 20rem; 
-    aspect-ratio: 1 / 1; 
-    border-radius: 15px; 
+    width: 20rem;
+    aspect-ratio: 1 / 1;
+    border-radius: 15px;
     cursor: pointer;
     transition: transform 0.2s;
     display: flex;
@@ -113,6 +115,20 @@ html, body {
     font-weight: bold;
     text-align: center;
     color: #333;
+    padding: 15px;
+    word-wrap: break-word;
+    box-sizing: border-box;
+}
+
+@media (min-width: 768px) {
+    .options-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+.correct-answer {
+    font-weight: bold;
+    color: #00CED1;
 }
 
 .option-box:hover {
