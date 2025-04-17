@@ -39,11 +39,22 @@ export const Challenge = () => {
         setProgress(progress + 25);
     };
 
+    const handleClose = () => {
+        console.log("Close button clicked");
+    };
+
     const isFlagEnabled = result !== null;
 
     return (
         <div className="challenge-container">
             <div className="progress-header">
+                <button
+                    className="close-button"
+                    onClick={handleClose}
+                    title="Đóng"
+                >
+                    ✕
+                </button>
                 <div className="progress-bar">
                     <div
                         className="progress-fill"
@@ -60,7 +71,7 @@ export const Challenge = () => {
             </div>
 
             {/* Placeholder cho câu hỏi */}
-            <div className="question-placeholder"></div>
+            <div className="question-placeholder">Đèo nào nổi tiếng ở Hà Giang?</div>
 
             {/* Các ô lựa chọn */}
             <div className="options-grid">
@@ -84,13 +95,15 @@ export const Challenge = () => {
             )}
 
             <div className="button-group">
-                <button
-                    className="skip-button"
-                    onClick={handleSkip}
-                    disabled={result !== null}
-                >
-                    BỎ QUA
-                </button>
+                {!result && (
+                    <button
+                        className="skip-button"
+                        onClick={handleSkip}
+                    >
+                        BỎ QUA
+                    </button>
+                )}
+
                 {result ? (
                     <button
                         className={`next-button ${result}`}
