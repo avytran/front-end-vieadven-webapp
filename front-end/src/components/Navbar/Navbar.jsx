@@ -30,9 +30,9 @@ export const Navbar = () => {
   )
 }
 
-const NavbarItem = ({ to, label, icon, className }) => {
+const NavbarItem = ({ to, label, icon, className = "" }) => {
   return (
-    <NavLink to={to} className={`navbar-item ${className || ""} ${({ isActive }) => isActive ? 'active-link' : 'navbar-item'}`}>
+    <NavLink to={to} className={({ isActive }) => isActive ? `active-link navbar-item ${className}` : `navbar-item ${className}`}>
       <img src={icon} alt="" />
       <p>{label}</p>
     </NavLink>

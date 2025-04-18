@@ -52,11 +52,7 @@ nav{
 
 }
 
-.active-link {
-  background-color: var(--active-bg-color);
-  font-weight: bold;
-  color: var(--active-text-color);
-}
+
 
 .navbar-item img {
   width: 15%;
@@ -74,4 +70,10 @@ nav{
 .navbar-logout:hover{
   background-color: var(--inactive-bg-color);
   color: #000
+}
+
+.active-link {
+  background-color: var(--active-bg-color);
+  font-weight: bold;
+  color: var(--active-text-color);
 }
