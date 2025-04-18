@@ -1,0 +1,7 @@
+.main-layout{
+    display: flex;
+}
+
+.main-layout main{
+    max-height: 100vh;
+}

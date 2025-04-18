@@ -1,0 +1,65 @@
+:root {
+  --active-text-color: #fff;
+  --active-bg-color: #1DB973;
+  --inactive-text-color: #98989A;
+  --inactive-bg-color: transparent;
+}
+
+nav{
+  width: 15%;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  align-items: center;
+  border-right: 0.1vw solid #98989a38;
+}
+
+.navbar-logo{
+  width: 80%;
+  margin: 2vw;
+}
+
+.navbar-controller{
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1vw
+}
+
+.navbar-item{
+  width: 90%;
+  display: flex;
+  align-items: center;
+  gap: 1vw;
+  padding: 0.5vw 0 0.5vw 0.8vw;
+  border-radius: 0.4vw;
+  font-size: 1vw;
+  box-sizing: border-box;
+  background-color: var(--inactive-bg-color);
+  font-weight: bold;
+  color: var(--inactive-text-color);
+  text-decoration: none;
+  transition: all ease-in-out 0.25s;
+}
+
+.navbar-item:hover{
+  background-color: var(--active-bg-color);
+  color: var(--active-text-color);
+
+}
+
+.active-link {
+  background-color: var(--active-bg-color);
+  font-weight: bold;
+  color: var(--active-text-color);
+}
+
+.navbar-item img {
+  width: 15%;
+}
+
+.navbar-item p {
+  margin: 0;
+}
