@@ -9,9 +9,11 @@ nav{
   width: 15%;
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  min-height: 100vh;
   align-items: center;
   border-right: 0.1vw solid #98989a38;
+  box-sizing: border-box;
+  position: relative;
 }
 
 .navbar-logo{
@@ -62,4 +64,14 @@ nav{
 
 .navbar-item p {
   margin: 0;
+}
+
+.navbar-logout {
+  position: absolute;
+  bottom: 0;
+}
+
+.navbar-logout:hover{
+  background-color: var(--inactive-bg-color);
+  color: #000
 }

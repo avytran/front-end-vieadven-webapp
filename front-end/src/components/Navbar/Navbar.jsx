@@ -2,7 +2,7 @@ import React from 'react';
 import "./Navbar.css";
 import { NavLink } from 'react-router-dom';
 import { navbarContents } from '../../constants';
-import { logo } from '../../assets/images/navbar-icons';
+import { logo, logout } from '../../assets/images/navbar-icons';
 
 export const Navbar = () => {
   return (
@@ -20,13 +20,19 @@ export const Navbar = () => {
           })
         }
       </div>
+      <NavbarItem
+        className="navbar-logout"
+        to="/logout"
+        label="Đăng xuất"
+        icon={logout}
+      />
     </nav>
   )
 }
 
-const NavbarItem = ({ to, label, icon }) => {
+const NavbarItem = ({ to, label, icon, className }) => {
   return (
-    <NavLink to={to} className={({ isActive }) => isActive ? 'active-link navbar-item' : 'navbar-item'}>
+    <NavLink to={to} className={`navbar-item ${className || ""} ${({ isActive }) => isActive ? 'active-link' : 'navbar-item'}`}>
       <img src={icon} alt="" />
       <p>{label}</p>
     </NavLink>
