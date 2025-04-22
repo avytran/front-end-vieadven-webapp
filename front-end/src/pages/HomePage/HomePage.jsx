@@ -129,8 +129,6 @@ export const HomePage = () => {
       <div className="map">
         <VietNamMap 
           mapData={mapData}
-          setCurrentProvince={setCurrentProvince}
-          allowedProvinces={allowedProvinces}
           chartOptions={chartOptions}
           setChartOptions={setChartOptions}
         />

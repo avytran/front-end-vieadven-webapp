@@ -3,13 +3,9 @@ import "./VietNamMap.css";
 import HighchartsReact from "highcharts-react-official";
 import Highcharts from "highcharts/highmaps";
 
-
-
-export const VietNamMap = ({ mapData, setCurrentProvince, allowedProvinces, chartOptions, setChartOptions }) => {
+export const VietNamMap = ({ mapData, chartOptions, setChartOptions }) => {
   const chartRef = React.useRef(null);
-  
 
-  
   const resetZoom = () => {
     const chart = chartRef.current?.chart;
     if (chart) {
