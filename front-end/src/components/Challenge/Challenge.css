@@ -1,0 +1,227 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+}
+
+.challenge-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 20px;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    width: 100%;
+    height: 100vh;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.progress-header {
+    display: flex;
+    align-items: center;
+    width: 80%;
+    margin-bottom: 20px;
+}
+
+.close-button {
+    margin-right: 10px;
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #444;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.close-button:hover {
+    background-color: #e0e0e0;
+    color: #000;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.progress-bar {
+    flex-grow: 1;
+    height: 10px;
+    background-color: #d3d3d3;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background-color: #4caf50;
+    transition: width 0.3s ease;
+}
+
+.flag-icon{
+    cursor: pointer;
+}
+
+.question-placeholder {
+    width: 90%;
+    height: 30vh;
+    background-color: #f0f0f0;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    color: #333;
+}
+
+.options-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    width: 90%;
+    justify-content: center;
+}
+
+.option-box {
+    width: 20rem;
+    aspect-ratio: 1 / 1;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: transform 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    color: #333;
+    padding: 15px;
+    word-wrap: break-word;
+    box-sizing: border-box;
+}
+
+@media (min-width: 768px) {
+    .options-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+.correct-answer {
+    font-weight: bold;
+    color: #f44336;
+}
+
+.option-box:hover {
+    transform: scale(1.05);
+}
+
+.option-box.selected {
+    border: 3px solid #000;
+}
+
+.option-box.correct {
+    background-color: #00CED1 !important;
+}
+
+.option-box.incorrect {
+    background-color: #808080 !important;
+}
+
+.result-message {
+    margin-bottom: 10px;
+    font-weight: bold;
+    display: flex;
+    gap: 1vw;
+}
+
+.result-message.correct {
+    color: #4caf50;
+}
+
+.result-message.incorrect {
+    color: #f44336;
+}
+
+.button-group {
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+    margin: 1.5rem 2rem;
+}
+
+.skip-button,
+.choose-button,
+.next-button {
+    padding: 1rem 3rem;
+    border: none;
+    border-radius: 20px;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease;
+}
+
+.skip-button:hover,
+.choose-button:hover,
+.next-button:hover {
+    transform: scale(1.1);
+}
+
+.skip-button {
+    background-color: white;
+    color: #333;
+}
+
+.choose-button {
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+.choose-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.choose-button:enabled {
+    background-color: #4caf50;
+    color: #fff;
+}
+
+.next-button.correct {
+    background-color: #4caf50;
+    color: #fff;
+}
+
+.next-button.incorrect {
+    background-color: #f44336;
+    color: #fff;
+}
+
+.action-controller {
+    max-height: 7vw;
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.action-controller.correct {
+    background-color: #D7FFB8;
+    color: #fff;
+}
+
+.action-controller.incorrect {
+    background-color: #FFDFE0;
+    color: #fff;
+}
