@@ -7,3 +7,6 @@ export const navbarContents = [
     { id: "navbar-mission", to: "/mission", icon: milestone, label: "Nhiệm vụ" },
     { id: "navbar-profile", to: "/profile", icon: adventure, label: "Hồ sơ" },
 ];
+
+export const UPLOAD_PRESET = "first_upload";
+export const CLOUD_NAME = "dgqolusci";
