@@ -6,7 +6,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { ImageUploadController } from '../../components/ImageUploadController';
 import { TextFieldController } from '../../components/TextFieldController';
 import { Button } from '@mui/material';
-
+import { passwordChangeSchema } from '../../schemas/passworkSchema';
+import { userSchema } from '../../schemas/userSchema';
 
 export const ProfilePage = () => {
     
@@ -28,16 +29,16 @@ const Information = () => {
         reset,
         formState: { errors, isSubmitting },
     } = useForm({
-        // resolver: yupResolver(personnelSchema),
+        resolver: yupResolver(userSchema),
         defaultValues: {
             "name": "",
             "avatar_url": "",
+            "email": "",
         },
     });
 
     const onSubmit = async (data) => {
-        console.log(data);
-        
+        console.log(1);
     }
     return (
         <div className='profile-item-container'>
@@ -60,11 +61,10 @@ const Information = () => {
                                 errors={errors}
                             />
                             <TextFieldController
-                                name="Email"
+                                name="email"
                                 control={control}
-                                label="email"
+                                label="Email"
                                 errors={errors}
-                                disabled
                             />
                             <Button
                                 type="submit"
@@ -90,8 +90,10 @@ const ChangePassword = () => {
         reset,
         formState: { errors, isSubmitting },
     } = useForm({
+        resolver: yupResolver(passwordChangeSchema),
         defaultValues: {
             "password": "",
+            "old_password": "",
             "confirmed_password": "",
         },
     });
