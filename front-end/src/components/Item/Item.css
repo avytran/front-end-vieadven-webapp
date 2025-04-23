@@ -1,0 +1,18 @@
+.item-container{
+    width: 4vw;
+    display: flex;
+    justify-content: space-between;
+    gap: 1vw;
+    box-sizing: border-box;
+}
+
+.item-icon{
+    width: 3vw;
+    height: 3vw;
+}
+
+.item-container span{
+    font-size: 1.5vw;
+    font-weight: 600;
+    color: #ffd56c;
+}

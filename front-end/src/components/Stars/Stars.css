@@ -1,0 +1,16 @@
+.stars-container {
+    width: 100%;
+    position: absolute;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    gap: 0.5vw;
+    padding-right: 1vw;
+    box-sizing: border-box;
+}
+
+.stars-container img{
+    width: 1vw;
+    height: 1vw;
+    object-fit: cover;
+}

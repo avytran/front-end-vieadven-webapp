@@ -1,4 +1,5 @@
 .home-page{
+    flex: 1;
     height: 100vh;
     box-sizing: border-box;
     display: flex;
@@ -12,16 +13,60 @@
     height: 100%;
     bottom: 20px;
     right: 50px;
-    position: relative;
+    position: absolute;
 }
 
 .home-page .map{
-    position: absolute;
-    display: flex;
     max-height: 100vh;
+    position: relative;
+
 }
 
 .home-page button{
     position: absolute;
     right: 0;
+}
+
+.home-page .homepage-info{
+    flex: 1;
+    position: relative;
+    height: 100vh;
+    padding: 2vw;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 2vw
+}
+
+.home-page .item-container{
+    align-self: flex-end;
+    margin-right: 5vw
+}
+
+.home-page .discovery-list-container{
+    width: 70%;
+    align-self: flex-end;
+}
+
+.home-page .province-name img{ 
+   width: 2vw;
+}
+
+.home-page .province-name{
+    display: flex;
+    align-items: center;
+    gap: 1vw;
+    font-size: 1.3vw;
+    font-weight: 600;
+    color: #f37c3f;
+}
+
+.home-page ul{
+    list-style: none;
+    margin: 0;
+    font-size: 1.2vw;
+}
+
+.home-page .discovery-item.completed{
+    font-style: italic;
 }
