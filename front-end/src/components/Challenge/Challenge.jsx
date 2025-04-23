@@ -10,7 +10,7 @@ export const Challenge = () => {
 
     const currentQuestion = questionsData[currentQuestionIndex];
 
-    const colors = ['#FFD700', '#32CD32', '#00CED1', '#FF69B4'];
+    const colors = ['#FFD56C', '#1DB973', '#23D3FF', '#FF5E8C'];
 
     const handleOptionClick = (id) => {
         if (result) return;
@@ -31,13 +31,10 @@ export const Challenge = () => {
     };
 
     const handleSkip = () => {
-        if (currentQuestionIndex < questionsData.length - 1) {
-            setCurrentQuestionIndex(currentQuestionIndex + 1);
-            setSelectedOption(null);
-            setResult(null);
-            const progressPercent = ((currentQuestionIndex + 1) / questionsData.length) * 100;
-            setProgress(progressPercent);
-        }
+        setResult('incorrect');
+        setSelectedOption(currentQuestion.correctAnswer);
+        const progressPercent = (currentQuestionIndex / questionsData.length) * 100;
+        setProgress(progressPercent);
     };
 
     const handleNext = () => {
@@ -57,7 +54,9 @@ export const Challenge = () => {
         console.log("Close button clicked");
     };
 
-    const isFlagEnabled = result !== null;
+    const handleReport = () => {
+        console.log("Report button clicked");
+    };
 
     return (
         <div className="challenge-container">
@@ -75,13 +74,7 @@ export const Challenge = () => {
                         style={{ width: `${progress}%` }}
                     ></div>
                 </div>
-                <button
-                    className="flag-button"
-                    disabled={!isFlagEnabled}
-                    title="Báo cáo câu hỏi"
-                >
-                    <span className="flag-icon">🏳️</span>
-                </button>
+
             </div>
 
             <div className="question-placeholder">
@@ -107,43 +100,44 @@ export const Challenge = () => {
                 ))}
             </div>
 
-            {result && (
-                <div className={`result-message ${result}`}>
-                    {result === 'correct' ? 'Đúng rồi!' : 'Đáp án đúng:'}
-                    {result !== 'correct' && (
-                        <span className="correct-answer">
-                            {" " + currentQuestion.options.find(opt => opt.id === currentQuestion.correctAnswer).text}
-                        </span>
+            <div className={`action-controller ${result}`}>
+                <div className="button-group" >
+                    {result ? (
+                        <div className={`result-message ${result}`}>
+                            <div className="flag-icon" onClick={handleReport}>🚩</div>
+                            {result === 'correct' ? 'Đúng rồi!' : 'Đáp án đúng:'}
+                            {result !== 'correct' && (
+                                <span className="correct-answer">
+                                    {" " + currentQuestion.options.find(opt => opt.id === currentQuestion.correctAnswer).text}
+                                </span>
+                            )}
+                        </div>
+                    ) : (
+                        <button
+                            className="skip-button"
+                            onClick={handleSkip}
+                        >
+                            BỎ QUA
+                        </button>
+                    )}
+
+                    {result ? (
+                        <button
+                            className={`next-button ${result}`}
+                            onClick={handleNext}
+                        >
+                            {currentQuestionIndex < questionsData.length - 1 ? 'TIẾP TỤC' : 'KẾT THÚC'}
+                        </button>
+                    ) : (
+                        <button
+                            className="choose-button"
+                            onClick={handleChoose}
+                            disabled={selectedOption === null}
+                        >
+                            CHỌN
+                        </button>
                     )}
                 </div>
-            )}
-
-            <div className="button-group">
-                {!result && (
-                    <button
-                        className="skip-button"
-                        onClick={handleSkip}
-                    >
-                        BỎ QUA
-                    </button>
-                )}
-
-                {result ? (
-                    <button
-                        className={`next-button ${result}`}
-                        onClick={handleNext}
-                    >
-                        {currentQuestionIndex < questionsData.length - 1 ? 'TIẾP TỤC' : 'KẾT THÚC'}
-                    </button>
-                ) : (
-                    <button
-                        className="choose-button"
-                        onClick={handleChoose}
-                        disabled={selectedOption === null}
-                    >
-                        CHỌN
-                    </button>
-                )}
             </div>
         </div>
     );

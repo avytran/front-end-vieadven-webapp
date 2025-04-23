@@ -1,7 +1,8 @@
-html, body {
+html,
+body {
     margin: 0;
     padding: 0;
-    overflow: hidden; 
+    overflow: hidden;
     height: 100vh;
     width: 100vw;
 }
@@ -11,9 +12,9 @@ html, body {
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    padding: 20px;
+    padding-top: 20px;
     font-family: Arial, sans-serif;
-    margin: 0 auto;
+    margin: 0;
     width: 100%;
     height: 100vh;
     box-sizing: border-box;
@@ -42,6 +43,7 @@ html, body {
     height: 36px;
     border-radius: 50%;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
 }
 
 .close-button:hover {
@@ -64,17 +66,8 @@ html, body {
     transition: width 0.3s ease;
 }
 
-.flag-button {
-    margin-left: 10px;
-    background: none;
-    border: none;
-    font-size: 24px;
+.flag-icon{
     cursor: pointer;
-}
-
-.flag-button:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
 }
 
 .question-placeholder {
@@ -96,9 +89,7 @@ html, body {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
-    width: 80%;
-    max-width: 800px;
-    margin: 0 auto;
+    width: 90%;
     justify-content: center;
 }
 
@@ -128,98 +119,109 @@ html, body {
 
 .correct-answer {
     font-weight: bold;
-    color: #00CED1;
+    color: #f44336;
 }
 
 .option-box:hover {
-transform: scale(1.05);
+    transform: scale(1.05);
 }
 
 .option-box.selected {
-border: 3px solid #000;
+    border: 3px solid #000;
 }
 
 .option-box.correct {
-background-color: #00CED1 !important;
+    background-color: #00CED1 !important;
 }
 
 .option-box.incorrect {
-background-color: #808080 !important;
+    background-color: #808080 !important;
 }
 
 .result-message {
-margin-bottom: 10px;
-font-weight: bold;
+    margin-bottom: 10px;
+    font-weight: bold;
+    display: flex;
+    gap: 1vw;
 }
 
 .result-message.correct {
-color: #4caf50;
-background-color: #e0ffe0;
-padding: 5px 10px;
-border-radius: 5px;
+    color: #4caf50;
 }
 
 .result-message.incorrect {
-color: #f44336;
-background-color: #ffe0e0;
-padding: 5px 10px;
-border-radius: 5px;
+    color: #f44336;
 }
 
 .button-group {
-  width: 70%;
-  display: flex;
-  justify-content: space-between;
-  margin: 1.5rem 2rem;
-}
-
-.button-group:has(.next-button) {
-    justify-content: flex-end;
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+    margin: 1.5rem 2rem;
 }
 
 .skip-button,
 .choose-button,
 .next-button {
-padding: 1rem 3rem;
-border: none;
-border-radius: 20px;
-font-size: 16px;
-cursor: pointer;
-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    padding: 1rem 3rem;
+    border: none;
+    border-radius: 20px;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease;
 }
 
 .skip-button:hover,
 .choose-button:hover,
 .next-button:hover {
-  transform: scale(1.1);
+    transform: scale(1.1);
 }
 
 .skip-button {
-background-color: white;
-color: #333;
+    background-color: white;
+    color: #333;
 }
 
 .choose-button {
-background-color: #f0f0f0;
-color: #333;
+    background-color: #f0f0f0;
+    color: #333;
 }
 
 .choose-button:disabled {
-opacity: 0.5;
-cursor: not-allowed;
+    opacity: 0.5;
+    cursor: not-allowed;
 }
 
 .choose-button:enabled {
-background-color: #4caf50;
-color: #fff;
+    background-color: #4caf50;
+    color: #fff;
 }
 
 .next-button.correct {
-background-color: #4caf50;
-color: #fff;
+    background-color: #4caf50;
+    color: #fff;
 }
 
 .next-button.incorrect {
-background-color: #f44336;
-color: #fff;
+    background-color: #f44336;
+    color: #fff;
+}
+
+.action-controller {
+    max-height: 7vw;
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.action-controller.correct {
+    background-color: #D7FFB8;
+    color: #fff;
+}
+
+.action-controller.incorrect {
+    background-color: #FFDFE0;
+    color: #fff;
 }
