@@ -2,6 +2,8 @@ import './App.css';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { MainLayout } from './layouts/MainLayout';
 import { HomePage } from './pages/HomePage';
+import { LogInPage } from './pages/LoginPage/LogInPage';
+import { RequireAuth } from './components/RequireAuth';
 
 function App() {
   return (
@@ -9,8 +11,14 @@ function App() {
       <Router>
         <div className="root-container">
           <Routes>
-            <Route element={<MainLayout />}>
-              <Route path="/" element={<HomePage />} />
+            {/* Public route */}
+            <Route path="/login" element={<LogInPage />} />
+
+            {/* Protected routes */}
+            <Route element={<RequireAuth />}>
+              <Route element={<MainLayout />}>
+                <Route path="/" element={<HomePage />} />
+              </Route>
             </Route>
           </Routes>
         </div>

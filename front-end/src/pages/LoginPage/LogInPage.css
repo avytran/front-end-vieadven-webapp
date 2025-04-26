@@ -1,0 +1,13 @@
+.log-in-page{
+    width: 100vw;
+    height: 100vh;
+    background-color: #1DB973;
+    display: flex;
+    justify-content: right;
+}
+
+.log-in-form{
+    width: 40vw;
+    height: 100vh;
+    background-color: #fff;
+}

@@ -1,4 +1,6 @@
 import axios from "axios";
+import { getAccessToken } from "../utils/jwt";
+import { getTraceId } from "../utils/trace";
 
 const ENV = process.env.REACT_APP_ENV.trim() || "development";
 const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
@@ -36,5 +38,24 @@ if (ENV === 'local'){
         headers: {"Content-Type": "application/json"}
     })
 }
+
+if (ENV !== 'local') {
+    api.interceptors.request.use((config) => {
+        const token = getAccessToken();
+        if (token) {
+            config.headers.Authorization = `Bearer ${token}`;
+        }
+
+        const traceId = getTraceId();
+        if (traceId) {
+            config.headers["X-Trace-Id"] = traceId;
+        }
+
+        return config;
+    }, (error) => {
+        return Promise.reject(error);
+    });
+}
+
 
 export { api };
