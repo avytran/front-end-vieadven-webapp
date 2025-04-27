@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { MainLayout } from './layouts/MainLayout';
 // import { HomePage } from './pages/HomePage';
 import { Leaderboard } from './components/Leaderboard';
-// import { DailyMissions } from './components/DailyMissions';
 
 function App() {
   return (
@@ -12,7 +11,7 @@ function App() {
         <div className="root-container">
           <Routes>
             <Route element={<MainLayout />}>
-              <Route path="/" element={<Leaderboard />} />
+              <Route path="/leaderboard" element={<Leaderboard />} />
             </Route>
           </Routes>
         </div>

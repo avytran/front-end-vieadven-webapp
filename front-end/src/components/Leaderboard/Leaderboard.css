@@ -1,5 +1,5 @@
 .leaderboard-container {
-    font-family: Arial, sans-serif;
+    font-family: 'Nunito';
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
@@ -256,6 +256,10 @@
     font-size: 28px;
     font-weight: bold;
     color: #333;
+  }
+
+  .icon-image.vietnam-hat{
+    width: 3vw;
   }
   
   /* Responsive design */
