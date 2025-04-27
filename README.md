@@ -4,6 +4,24 @@ Welcome to the **VieAdven** front-end repository! This project is an interactive
 
 ---
 
+# 🚀 Installation and Project Running Guide
+## 📦 1. Install dependencies
+After cloning the project, open your terminal and run:
+
+```bash
+npm install
+```
+
+##🖥️ 2. Run the application in Local environment
+```bash
+npm start
+```
+
+##🛠️ 3. Run the application in Development mode
+```bash
+npm run start:dev
+```
+
 ## 🌟 Features
 
 - 🗺️ Interactive Vietnam Map: Navigate through a dynamic map of Vietnam, with each province representing a unique stage filled with challenges.
