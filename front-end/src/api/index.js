@@ -60,36 +60,42 @@ api.interceptors.response.use(
     (response) => response,
     async (error) => {
       const originalRequest = error.config;
-
-      // Nếu lỗi là 401 Unauthorized và chưa từng retry
-      if (error.response?.status === 401 && !originalRequest._retry) {
+  
+      // Nếu lỗi 401 và chưa retry, và KHÔNG phải login hoặc register
+      if (
+        error.response?.status === 401 &&
+        !originalRequest._retry &&
+        !originalRequest.url.includes("/auth/login") &&
+        !originalRequest.url.includes("/auth/register")
+      ) {
         originalRequest._retry = true;
-
+  
         try {
           const refreshToken = getRefreshToken();
           if (!refreshToken) throw new Error("No refresh token available");
-
+  
           const refreshResponse = await axios.post(`${API_BASE_URL}/auth/refresh`, {
             refreshToken,
           });
-
+  
           const newAccessToken = refreshResponse.data.accessToken;
-          setAccessToken(newAccessToken); 
-
+          setAccessToken(newAccessToken);
+  
+          // Update Authorization header
           originalRequest.headers.Authorization = `Bearer ${newAccessToken}`;
           return api(originalRequest);
-
+  
         } catch (refreshError) {
           console.error("Refresh token failed", refreshError);
-          window.location.href = "/login";
+          window.location.href = "/login"; // Redirect về login
           return Promise.reject(refreshError);
         }
       }
-
+  
       return Promise.reject(error);
     }
   );
-}
+}  
 
 
 

@@ -3,7 +3,7 @@ import { api } from "./index";
 const loginUser = async ({ email, password }) => {
   try {
     const response = await api.post("/auth/login", { email, password });
-    const token = response.data.accessToken;
+    const token = response.data;
     return token;
   } catch (error) {
     console.error("Login failed:", error);
@@ -11,14 +11,12 @@ const loginUser = async ({ email, password }) => {
   }
 };
 
-const register = async ({ name, email, password }) => {
+const userRegister = async ({ name, email, password }) => {
   try {
-    console.log(name, email, password);
-    
     const response = await api.post("/auth/register", { 
       name, email, password
     });
-    const token = response.data.accessToken;
+    const token = response.data;
     return token;
   } catch (error) {
     console.error("Register failed:", error);
@@ -27,4 +25,4 @@ const register = async ({ name, email, password }) => {
 };
 
 
-export { loginUser, register };
+export { loginUser, userRegister };

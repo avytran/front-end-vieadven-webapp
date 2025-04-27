@@ -23,17 +23,17 @@ export const LogInPage = () => {
   } = useForm({
     resolver: yupResolver(logInSchema),
     defaultValues: {
-      username: "",
+      email: "",
       password: ""
     },
     mode: "onBlur"
   });
 
   const handleLogin = async (payload) => {
-    const { username, password } = payload;
+    const { email, password } = payload;
 
     try {
-      const token = await loginUser({ username, password });
+      const token = await loginUser({ email, password });
       login(token);
       navigate('/');
     } catch (error) {
@@ -61,7 +61,7 @@ export const LogInPage = () => {
         <form onSubmit={handleSubmit(handleLogin)}>
           <div className="form-input">
             <TextFieldController
-              name="username"
+              name="email"
               control={control}
               label="Tên tài khoản"
               errors={errors}

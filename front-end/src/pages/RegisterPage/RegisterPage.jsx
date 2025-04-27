@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { register } from "../../api/auth.service";
+import { userRegister } from "../../api/auth.service";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -7,10 +7,12 @@ import { registerSchema } from "../../schemas/registerSchema";
 import { TextFieldController } from "../../components/TextFieldController";
 import { PasswordController } from "../../components/PasswordController";
 import { blackWhiteVieAdven } from "../../assets/images/login";
+import { useAuth } from "../../context/useAuth";
 
 export const RegisterPage = () => {
   const navigate = useNavigate();
   const [serverError, setServerError] = useState("");
+const { register } = useAuth();
 
   const {
     control,
@@ -31,7 +33,8 @@ export const RegisterPage = () => {
     const { name, email, password } = payload;
 
     try {
-      const token = await register({ name, email, password });
+      const token = await userRegister({ name, email, password });
+      register(token.data);
       navigate('/');
     } catch (error) {
       console.error("Register failed:", error);
