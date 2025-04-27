@@ -5,20 +5,20 @@ import { getPlayerItem } from '../../api/playerItem.service';
 import { getPlayerMission } from '../../api/playerMission.service';
 import { Item } from '../../components/Item';
 import { MissionCard } from '../../components/MissionCard';
-
-const player_id = "US002"
+import { useAuth } from '../../context/useAuth';
 
 export const MissionPage = () => {
+    const { user } = useAuth();
     const navigate = useNavigate();
     const [item, setItem] = useState([]);
     const [missions, setMissions] = useState([]);
 
     const fetchData = useCallback(async () => {
         try {
-            const responseItem = await getPlayerItem(player_id);
-            setItem(responseItem.data[0]);
+            const responseItem = await getPlayerItem(user?.user_id);
+            setItem(responseItem?.data[0]);
 
-            const responseMission = await getPlayerMission(player_id);
+            const responseMission = await getPlayerMission(user?.user_id);
             setMissions(responseMission.data);
 
         } catch (error) {

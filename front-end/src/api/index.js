@@ -61,7 +61,6 @@ api.interceptors.response.use(
     async (error) => {
       const originalRequest = error.config;
   
-      // Nếu lỗi 401 và chưa retry, và KHÔNG phải login hoặc register
       if (
         error.response?.status === 401 &&
         !originalRequest._retry &&
@@ -87,7 +86,7 @@ api.interceptors.response.use(
   
         } catch (refreshError) {
           console.error("Refresh token failed", refreshError);
-          window.location.href = "/login"; // Redirect về login
+          window.location.href = "/login"; 
           return Promise.reject(refreshError);
         }
       }

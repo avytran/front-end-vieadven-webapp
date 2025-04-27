@@ -1,9 +1,9 @@
 export const getProvinceColor = (allowedProvinces, key) => {
-    if(allowedProvinces.includes(key) && allowedProvinces[allowedProvinces.length - 1] === key){
+    if(allowedProvinces?.includes(key) && allowedProvinces[allowedProvinces?.length - 1] === key){
         return "#f37c3f";
     }
 
-    if(allowedProvinces.includes(key)){
+    if(allowedProvinces?.includes(key)){
         return "#1DB973"
     }
 
@@ -14,7 +14,7 @@ export const getProvinceColor = (allowedProvinces, key) => {
 
 
 export const getProvinceIds = (allowedProvinces) => {
-    return allowedProvinces.map(province => province.province_id.trim());
+    return allowedProvinces?.map(province => province.province_id.trim());
 }
 
 export const getProvinceName = (allowedProvinces, key) => {

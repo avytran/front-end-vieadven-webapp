@@ -26,11 +26,12 @@ function App() {
                 <Route element={<NoNavbarLayout />}>
                   <Route path="/landmark/:landmark_id" element={<Challenge />} />
                   <Route path="/landmark/:landmark_id/completed" element={<CompleteQuestionPage />} />
-                  <Route path="/mission" element={<MissionPage />} />
                 </Route>
                 <Route element={<MainLayout />}>
                   <Route path="/" element={<HomePage />} />
                   <Route path="/leaderboard" element={<LeaderboardPage />} />
+                  <Route path="/mission" element={<MissionPage />} />
+
                 </Route>
               </Route>
           </Routes>

@@ -70,13 +70,15 @@ export const Challenge = () => {
         } else {
             console.log("Quiz completed!");
             setProgress(100);
-            await updateGamePlay(player_id, landmark_id, score);
-            navigate(`/landmark/${landmark_id}/completed`)
+            console.log(landmark_id);
+            
+            await updateGamePlay(player_id, landmark_id, 20);
+            navigate(`/landmark/${landmark_id}/completed`);
         }
     };
 
     const handleClose = () => {
-        console.log("Close button clicked");
+        navigate('/')
     };
 
     const handleReport = () => {
