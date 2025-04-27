@@ -1,0 +1,55 @@
+:root{
+    --incompleted-color: #98989A;
+    --completed-color: #1DB973;
+}
+
+.landmark-card-container{
+    width: 11vw;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    transition: all 0.2s ease-in-out;
+    padding: 1vw;
+}
+
+.landmark-card-container:hover{
+    cursor: pointer;
+    scale: 1.05;
+}
+
+.landmark-card-container .landmark-img{
+    width: 100%;
+    aspect-ratio: 2/3;
+    object-fit: cover;
+    border-radius: 1vw;
+    border: 0.2vw solid var(--incompleted-color);
+}
+
+.landmark-card-container .landmark-name-tag{
+    width: 80%;
+    font-size: 1vw;
+    height: 35%;
+    font-weight: 600;
+    color: var(--incompleted-color);
+    margin-top: 0.5vw;
+    border: 0.15vw solid var(--incompleted-color);
+    border-radius: 1vw;
+    position: absolute;
+    bottom: 2vw;
+    background-color: #ffffffdf;
+    padding: 0.5vw 0.3vw;
+    box-sizing: border-box;
+}
+
+.landmark-card-container .landmark-name{
+   margin: 0;
+}
+
+.landmark-card-container.completed .landmark-img{
+    border: 0.2vw solid var(--completed-color);
+}
+
+.landmark-card-container.completed .landmark-name-tag {
+    color: var(--completed-color);
+    border: 0.15vw solid var(--completed-color);
+}

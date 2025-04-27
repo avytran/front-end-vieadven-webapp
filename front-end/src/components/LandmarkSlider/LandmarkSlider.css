@@ -1,0 +1,15 @@
+@import "~slick-carousel/slick/slick.css";
+@import "~slick-carousel/slick/slick-theme.css";
+
+.landmark-slider-container{
+    width: 80%;
+}
+
+.landmark-slider-container button{
+    position: absolute;
+    right: 0;
+}
+
+.slick-slider{
+    width: 100%;
+}

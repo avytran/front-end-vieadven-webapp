@@ -1,0 +1,42 @@
+[
+    {
+        "landmark_id": "LM001",
+        "landmark_name": "Động Tam Thanh",
+        "description": "Quần thể hang động nổi tiếng với cảnh sắc thiên nhiên kỳ thú, gắn liền với lịch sử và văn hóa Lạng Sơn.",
+        "image_url": "https://res.cloudinary.com/dgqolusci/image/upload/v1745315058/lang-son-o-dau_oxcngn.webp",
+        "province_id": 6,
+        "total_question": 7
+    },
+    {
+        "landmark_id": "LM002",
+        "landmark_name": "Núi Tô Thị",
+        "description": "Ngọn núi có hình dáng giống người phụ nữ bồng con ngóng chồng, biểu tượng cho sự thủy chung son sắt.",
+        "image_url": "https://res.cloudinary.com/dgqolusci/image/upload/v1745315058/lang-son-o-dau_oxcngn.webp",
+        "province_id": 6,
+        "total_question": 6
+    },
+    {
+        "landmark_id": "LM003",
+        "landmark_name": "Cửa khẩu Hữu Nghị",
+        "description": "Cửa khẩu quốc tế sầm uất giữa Việt Nam và Trung Quốc, điểm giao thương và du lịch quan trọng.",
+        "image_url": "https://res.cloudinary.com/dgqolusci/image/upload/v1745315058/lang-son-o-dau_oxcngn.webp",
+        "province_id": 6,
+        "total_question": 5
+    },
+    {
+        "landmark_id": "LM004",
+        "landmark_name": "Thành nhà Mạc",
+        "description": "Di tích lịch sử từ thời nhà Mạc với dấu ấn kiến trúc cổ và giá trị lịch sử lâu đời.",
+        "image_url": "https://res.cloudinary.com/dgqolusci/image/upload/v1745315058/lang-son-o-dau_oxcngn.webp",
+        "province_id": 6,
+        "total_question": 4
+    },
+    {
+        "landmark_id": "LM005",
+        "landmark_name": "Chùa Tiên - Giếng Tiên",
+        "description": "Quần thể tâm linh nằm trong lòng núi đá, nơi người dân địa phương đến cầu may và chiêm bái.",
+        "image_url": "https://res.cloudinary.com/dgqolusci/image/upload/v1745315058/lang-son-o-dau_oxcngn.webp",
+        "province_id": 6,
+        "total_question": 5
+    }
+]
