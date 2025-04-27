@@ -8,8 +8,8 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    if (token && token !== undefined) {
-      const decoded = jwtDecode(token.accessToken);
+    if (token.accessToken && token.accessToken !== undefined) {
+      const decoded = jwtDecode(token?.accessToken);
       setUser(decoded);
     }
   }, [token]);
