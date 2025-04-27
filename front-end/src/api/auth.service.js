@@ -1,8 +1,8 @@
 import { api } from "./index";
 
-const loginUser = async ({ username, password }) => {
+const loginUser = async ({ email, password }) => {
   try {
-    const response = await api.post("/auth/login", { username, password });
+    const response = await api.post("/auth/login", { email, password });
     const token = response.data.accessToken;
     return token;
   } catch (error) {
@@ -11,5 +11,20 @@ const loginUser = async ({ username, password }) => {
   }
 };
 
+const register = async ({ name, email, password }) => {
+  try {
+    console.log(name, email, password);
+    
+    const response = await api.post("/auth/register", { 
+      name, email, password
+    });
+    const token = response.data.accessToken;
+    return token;
+  } catch (error) {
+    console.error("Register failed:", error);
+    throw error; 
+  }
+};
 
-export { loginUser };
+
+export { loginUser, register };

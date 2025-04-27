@@ -1,17 +1,14 @@
 import React, { useState } from "react";
-import "./LogInPage.css"
-import { loginUser } from "../../api/auth.service";
-import { useAuth } from "../../context/useAuth";
+import { register } from "../../api/auth.service";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { logInSchema } from "../../schemas/logInSchema";
+import { registerSchema } from "../../schemas/registerSchema";
 import { TextFieldController } from "../../components/TextFieldController";
 import { PasswordController } from "../../components/PasswordController";
 import { blackWhiteVieAdven } from "../../assets/images/login";
 
-export const LogInPage = () => {
-  const { login } = useAuth();
+export const RegisterPage = () => {
   const navigate = useNavigate();
   const [serverError, setServerError] = useState("");
 
@@ -21,24 +18,24 @@ export const LogInPage = () => {
     setValue,
     formState: { errors },
   } = useForm({
-    resolver: yupResolver(logInSchema),
+    resolver: yupResolver(registerSchema),
     defaultValues: {
-      username: "",
+      name: "",
+      email: "",
       password: ""
     },
     mode: "onBlur"
   });
 
   const handleLogin = async (payload) => {
-    const { username, password } = payload;
+    const { name, email, password } = payload;
 
     try {
-      const token = await loginUser({ username, password });
-      login(token);
+      const token = await register({ name, email, password });
       navigate('/');
     } catch (error) {
-      console.error("Login failed:", error);
-      setServerError("Đăng nhập thất bại. Vui lòng kiểm tra lại tài khoản hoặc mật khẩu.");
+      console.error("Register failed:", error);
+      setServerError("Đăng ký thất bại.");
     }
   };
 
@@ -48,22 +45,28 @@ export const LogInPage = () => {
         <img src={blackWhiteVieAdven} alt="VieAdven" />
         <div className="content">
           <div>
-            <h1>Hi, newbie!</h1>
-            <p>Nếu bạn chưa có tài khoản, vui lòng đăng ký!</p>
+            <h1>Welcome Back!</h1>
+            <p>Nếu bạn đã có tài khoản, vui lòng đăng nhập!</p>
           </div>
-          <button className="navigate-button" onClick={() => { navigate('/register') }}>Đăng ký</button>
+          <button className="navigate-button" onClick={() => { navigate('/login') }}>Đăng nhập</button>
         </div>
       </div>
       <div className="log-in-form">
         <div className="content">
-          <h1>Đăng nhập</h1>
+          <h1>Tạo tài khoản mới</h1>
         </div>
         <form onSubmit={handleSubmit(handleLogin)}>
           <div className="form-input">
             <TextFieldController
-              name="username"
+              name="name"
               control={control}
-              label="Tên tài khoản"
+              label="Tên của bạn"
+              errors={errors}
+            />
+            <TextFieldController
+              name="email"
+              control={control}
+              label="Email"
               errors={errors}
             />
             <PasswordController
@@ -75,7 +78,7 @@ export const LogInPage = () => {
             />
           </div>
           {serverError && <p className="log-in-error">{serverError}</p>}
-          <button className="submit-button" type="submit">Đăng nhập</button>
+          <button className="submit-button" type="submit">Đăng ký</button>
         </form>
       </div>
     </div>

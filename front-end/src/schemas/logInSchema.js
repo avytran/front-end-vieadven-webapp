@@ -1,9 +1,9 @@
 import * as yup from 'yup';
 
 const logInSchema = yup.object({
-  username: yup
+  email: yup
     .string()
-    .email("Tên tài khoản là một email")
+    .email("Email không hợp lệ")
     .required('Vui lòng nhập Tên tài khoản'),
 
   password: yup

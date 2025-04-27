@@ -1,5 +1,5 @@
 import axios from "axios";
-import { getAccessToken } from "../utils/jwt";
+import { getAccessToken, setAccessToken, getRefreshToken } from "../utils/jwt";
 import { getTraceId } from "../utils/trace";
 
 const ENV = process.env.REACT_APP_ENV.trim() || "development";
@@ -55,7 +55,42 @@ if (ENV !== 'local') {
     }, (error) => {
         return Promise.reject(error);
     });
+// Response interceptor for handling token refresh
+api.interceptors.response.use(
+    (response) => response,
+    async (error) => {
+      const originalRequest = error.config;
+
+      // Nếu lỗi là 401 Unauthorized và chưa từng retry
+      if (error.response?.status === 401 && !originalRequest._retry) {
+        originalRequest._retry = true;
+
+        try {
+          const refreshToken = getRefreshToken();
+          if (!refreshToken) throw new Error("No refresh token available");
+
+          const refreshResponse = await axios.post(`${API_BASE_URL}/auth/refresh`, {
+            refreshToken,
+          });
+
+          const newAccessToken = refreshResponse.data.accessToken;
+          setAccessToken(newAccessToken); 
+
+          originalRequest.headers.Authorization = `Bearer ${newAccessToken}`;
+          return api(originalRequest);
+
+        } catch (refreshError) {
+          console.error("Refresh token failed", refreshError);
+          window.location.href = "/login";
+          return Promise.reject(refreshError);
+        }
+      }
+
+      return Promise.reject(error);
+    }
+  );
 }
+
 
 
 export { api };
