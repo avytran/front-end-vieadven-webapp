@@ -1,0 +1,62 @@
+.province-details-container{
+    flex: 1;
+    position: relative;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding: 2vw;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    gap: 2vw;
+    background-color: transparent;
+}
+.province-details-container .province-name{
+    width: 79%;
+    font-size: 1.5vw;
+    font-weight: 600;
+    color: #ffffff;
+    top: 2vw;
+    left: 2vw;
+    background-color: #1DB973;
+    padding: 0.5vw 1vw;
+    border-radius: 1.2vw;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.province-details-container .province-name:hover{
+    background-color: #1a975e;
+}
+
+.province-details-card{
+    width: 79%;
+}
+
+.progress-bar-container{
+    display: flex;
+    align-items: center;
+    gap: 2vw
+}
+
+.province-details-card img{
+    width: 4vw;
+}
+
+.province-details-card .card-container{
+    gap: 2vw;
+    display: flex;
+    flex-direction: column;
+}
+
+.province-details-container .gift-container{
+    display: flex;
+    align-items: center;
+    gap: 3vw;
+    font-size: 2vw;
+    color: #FFD56C;
+}
