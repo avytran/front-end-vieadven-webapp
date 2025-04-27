@@ -15,4 +15,16 @@ const getGamePlay = async (userId, landmarkId) => {
     }
 }
 
-export { getGamePlay }
+const getGameplayByUserIdAndProvinceId = async (province_id, user_id) => {
+    try {
+        console.log(`/gameplays/${province_id}/user/${user_id}`);
+        
+        const response = await api.get(`/gameplays/${province_id.trim()}/user/${user_id}`)
+        return response.data;
+    } catch (error) {
+        console.error("API Error:", error);
+        return [];
+    }
+}
+
+export { getGamePlay, getGameplayByUserIdAndProvinceId }

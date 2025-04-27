@@ -3,8 +3,11 @@
 
 .landmark-slider-container{
     width: 80%;
+}
 
-   
+.landmark-slider-container button{
+    position: absolute;
+    right: 0;
 }
 
 .slick-slider{

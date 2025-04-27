@@ -22,11 +22,6 @@
 
 }
 
-.home-page button{
-    position: absolute;
-    right: 0;
-}
-
 .home-page .homepage-info{
     flex: 1;
     position: relative;

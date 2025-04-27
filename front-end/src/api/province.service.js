@@ -10,4 +10,14 @@ const getProvinceById = async (provinceId) => {
     }
 }
 
-export { getProvinceById }
+const getAllowedProvinces = async (player_id) => {
+    try {
+        const response = await api.get(`/provinces/${player_id}/allowed`);
+        return response.data;
+    } catch (error) {
+        console.error("API Error:", error);
+        return [];
+    }
+}
+
+export { getProvinceById, getAllowedProvinces, }
