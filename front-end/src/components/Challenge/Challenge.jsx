@@ -1,11 +1,13 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState, useMemo } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import './Challenge.css';
 import questionsData from '../../mocks/data/questions.json';
 import { getQuestionsAnswer } from '../../api/questionAnswer.service';
-import { updateGamePlay } from '../../api/gameplay.service';
+import { updateGamePlay } from '../../api/gamePlay.service';
 
 const player_id = "US002";
+const colors = ['#FFD56C', '#1DB973', '#23D3FF', '#FF5E8C'];
+
 export const Challenge = () => {
     const { landmark_id } = useParams(); 
     const navigate = useNavigate();
@@ -14,10 +16,15 @@ export const Challenge = () => {
     const [result, setResult] = useState(null);
     const [progress, setProgress] = useState(0);
     const [score, setScore] = useState(0);
+    const [questions, setQuestions] = useState([]);
 
     const fetchData = useCallback(async () => {
-        const qandAResponse = await getQuestionsAnswer(landmark_id);
-        console.log(qandAResponse);
+        try {
+            const qandAResponse = await getQuestionsAnswer(landmark_id);
+            setQuestions(qandAResponse);
+        } catch (error) {
+            console.error("Error fetching questions:", error);
+        }
         
     }, [landmark_id])
 
@@ -25,9 +32,7 @@ export const Challenge = () => {
         fetchData();
     }, [fetchData])
 
-    const currentQuestion = questionsData[currentQuestionIndex];
-
-    const colors = ['#FFD56C', '#1DB973', '#23D3FF', '#FF5E8C'];
+    const currentQuestion = useMemo(() => questions?.[currentQuestionIndex], [currentQuestionIndex, questions]);
 
     const handleOptionClick = (id) => {
         if (result) return;
@@ -36,7 +41,7 @@ export const Challenge = () => {
 
     const handleChoose = () => {
         if (!selectedOption) return;
-        const isCorrect = selectedOption === currentQuestion.correctAnswer;
+        const isCorrect = selectedOption === currentQuestion.answers.find(item => item.is_correct).answer_id;
         setResult(isCorrect ? 'correct' : 'incorrect');
         if (isCorrect) {
             setScore(prev => prev + 1);
@@ -98,11 +103,11 @@ export const Challenge = () => {
             </div>
 
             <div className="question-placeholder">
-                {currentQuestion.question}
+                {currentQuestion?.content}
             </div>
 
             <div className="options-grid">
-                {currentQuestion.options.map((option, index) => (
+                {currentQuestion?.answers?.map((option, index) => (
                     <div
                         key={option.answer_id}
                         className={`option-box ${selectedOption === option.answer_id ? 'selected' : ''}
@@ -128,7 +133,7 @@ export const Challenge = () => {
                             {result === 'correct' ? 'Đúng rồi!' : 'Đáp án đúng:'}
                             {result !== 'correct' && (
                                 <span className="correct-answer">
-                                    {" " + currentQuestion.options.find(opt => opt.is_correct).content}
+                                    {" " + currentQuestion.answers.find(opt => opt.is_correct).content}
                                 </span>
                             )}
                         </div>

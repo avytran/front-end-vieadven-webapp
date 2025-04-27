@@ -2,7 +2,7 @@ import { api } from "./index";
 
 const getQuestionsAnswer = async (landmark_id) => {
     try {
-        const response = await api.get(`/gameplays/${landmark_id}/questions`);
+        const response = await api.get(`/question-answer/${landmark_id}/questions`);
         return response.data;
     } catch (error) {
         console.error("API Error:", error);

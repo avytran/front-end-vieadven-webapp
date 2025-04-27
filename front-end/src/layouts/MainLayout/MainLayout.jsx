@@ -7,7 +7,7 @@ export const MainLayout = () => {
   return (
     <div className="main-layout">
       <Navbar />
-      <main style={{ padding: '20px' }}>
+      <main>
         <Outlet />
       </main>
     </div>

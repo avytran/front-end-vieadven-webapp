@@ -1,0 +1,244 @@
+.daily-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: 'Nunito';
+  }
+  
+  .daily-container .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .daily-container .header h1 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .daily-container .counters {
+    display: flex;
+    gap: 16px;
+  }
+  
+  .daily-container .counter {
+    display: flex;
+    align-items: center;
+  }
+  
+  .daily-container .icon-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  
+  .daily-container .flame-container {
+    background-color: #fff3e0;
+    padding: 8px;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .daily-container .flame-count {
+    color: #ff7043;
+    font-size: 24px;
+    font-weight: bold;
+    margin-left: 8px;
+  }
+  
+  .daily-container .Vietnam_hat-container {
+    background-color: #fff8e1;
+    padding: 8px;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .daily-container .Vietnam_hat-count {
+    color: #ffca28;
+    font-size: 24px;
+    font-weight: bold;
+    margin-left: 8px;
+  }
+  
+  .daily-container .content {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 20px;
+  }
+  
+  .daily-container .missions-container {
+    overflow: hidden;
+  }
+  
+  .daily-container .mission-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-height: 500px;
+    overflow-y: auto;
+    padding-right: 10px;
+  }
+  
+  .daily-container .mission-card {
+    background-color: white;
+    border-radius: 8px;
+    padding: 16px;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.daily-container .05);
+  }
+  
+  .daily-container .mission-card.daily-container .highlighted {
+    border: 2px solid #ffca28;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.daily-container .1);
+  }
+
+  .daily-container .mission-card.daily-container .claimed {
+    border: 2px solid #4a4a4a48;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.daily-container .1);
+    background-color: #f5f5f5;
+
+    .daily-container .progress-bar-fill{
+      background-color: #4a4a4a48;
+    }
+  }
+  
+  .daily-container .mission-content {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  
+  .daily-container .mission-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    overflow: hidden;
+    border: 0px;
+  }
+  
+  .daily-container .mission-info {
+    flex-grow: 1;
+  }
+  
+  .daily-container .mission-info h3 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .daily-container .progress-bar {
+    width: 100%;
+    height: 16px;
+    background-color: #eeeeee;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  .daily-container .progress-fill {
+    height: 100%;
+    background-color: #ffca28;
+    border-radius: 8px;
+  }
+  
+  .daily-container .progress-text {
+    text-align: right;
+    color: #757575;
+    font-size: 14px;
+    margin-top: 4px;
+  }
+  
+  .daily-container .reward-icon {
+    width: 40px;
+    height: 40px;
+    background-color: #fff8e1;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    overflow: hidden;
+  }
+  
+  .daily-container .claim-button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 16px;
+  }
+  
+  .daily-container .claim-button {
+    background-color: #fff8e1;
+    color: #b78620;
+    font-weight: bold;
+    padding: 8px 32px;
+    border-radius: 24px;
+    border: 1px solid #ffca28;
+    cursor: pointer;
+  }
+  
+  .daily-container .claim-button:hover {
+    background-color: #ffecb3;
+  }
+  
+  .daily-container .challenge-section {
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.daily-container .05);
+    height: fit-content;
+  }
+  
+  .daily-container .challenge-section h2 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+  
+  .daily-container .challenge-section p {
+    color: #757575;
+    margin-bottom: 24px;
+  }
+  
+  .daily-container .start-button {
+    width: 100%;
+    background-color: #e3f2fd;
+    color: #2196f3;
+    font-weight: bold;
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .daily-container .start-button:hover {
+    background-color: #bbdefb;
+  }
+
+  .daily-container .progress-bar-container{
+    display: flex;
+    align-items: center;
+}
+  
+  @media (max-width: 768px) {
+    .daily-container .content {
+      grid-template-columns: 1fr;
+    }
+    
+    .daily-container .mission-list {
+      max-height: none;
+    }
+  }
