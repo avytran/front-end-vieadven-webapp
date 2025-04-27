@@ -5,6 +5,7 @@ import { VietNamMap } from '../../components/VietNamMap';
 import { Item } from '../../components/Item';
 import { HSTS } from '../../assets/images/map';
 import { Card } from '../../components/Card';
+import { ChatbotPopup } from '../../components/ChatbotPopup';
 import { ConfirmedDialog } from '../../components/ConfirmedDialog';
 import { adventure } from '../../assets/images/navbar-icons';
 import vietnamMap from "@highcharts/map-collection/countries/vn/vn-all.geo.json";
@@ -150,6 +151,7 @@ export const HomePage = () => {
 
   return (
     <div className="home-page">
+      <ChatbotPopup />
       {
         selectedLandmarkId && 
           <ConfirmedDialog
