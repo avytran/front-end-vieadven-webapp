@@ -1,0 +1,11 @@
+{
+ 	"user_id": "US001",
+    "mission_id": "MS001",
+    "title": "Trả lời đúng 50 câu hỏi",
+    "target": 50,
+    "target_type": "correct_answer",
+    "is_active": true,
+    "progress": 20,
+    "is_completed": false,
+    "claimed": false
+}
