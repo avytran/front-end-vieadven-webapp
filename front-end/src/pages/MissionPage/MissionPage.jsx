@@ -2,21 +2,23 @@ import React, { useCallback, useState, useEffect } from 'react';
 import './MissionPage.css';
 import { useNavigate } from 'react-router-dom';
 import { getPlayerItem } from '../../api/playerItem.service';
-import { getPlayerMissions } from '../../api/playerMission.service';
+import { getPlayerMission } from '../../api/playerMission.service';
 import { Item } from '../../components/Item';
 import { MissionCard } from '../../components/MissionCard';
 
+const player_id = "US002"
+
 export const MissionPage = () => {
     const navigate = useNavigate();
-    const [item, setItem] = useState({});
+    const [item, setItem] = useState([]);
     const [missions, setMissions] = useState([]);
 
     const fetchData = useCallback(async () => {
         try {
-            const responseItem = await getPlayerItem("US001");
+            const responseItem = await getPlayerItem(player_id);
             setItem(responseItem.data[0]);
 
-            const responseMission = await getPlayerMissions("US001");
+            const responseMission = await getPlayerMission(player_id);
             setMissions(responseMission.data);
 
         } catch (error) {

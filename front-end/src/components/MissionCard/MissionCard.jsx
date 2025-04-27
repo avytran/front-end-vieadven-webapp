@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './MissionCard.css';
 import { treasureChestIcon } from '../../assets/images/daily-mission-icons';
 import { ProgressBar } from '../ProgressBar';
-import { questionMarkIcon } from '../../assets/images/daily-mission-icons'; 
+import { questionMarkIcon } from '../../assets/images/daily-mission-icons';
 
 export const MissionCard = ({ mission }) => {
     const [isCompleted, setIsCompleted] = useState(mission.progress === mission.target && !mission.claimed);
@@ -11,7 +11,7 @@ export const MissionCard = ({ mission }) => {
     const handleClaim = async () => {
         try {
             console.log("Claiming mission:", mission.mission_id);
-            
+
             // Call the API to claim the mission reward
             // Add item
             // Update the isCompleted state to true
@@ -30,11 +30,14 @@ export const MissionCard = ({ mission }) => {
                 </div>
                 <div className="mission-info">
                     <h3>{mission.title}</h3>
-                    <ProgressBar value={mission.progress} max={mission.target} />
+                    <div className="progress-bar-container">
+                        <ProgressBar value={mission.progress} max={mission.target} />
+                        <div className="reward-icon">
+                            <img src={treasureChestIcon} alt="Reward" className="icon-image vietnam-hat-reward" />
+                        </div>
+                    </div>
                 </div>
-                <div className="reward-icon">
-                    <img src={treasureChestIcon} alt="Reward" className="icon-image vietnam-hat-reward" />
-                </div>
+
             </div>
             {isCompleted && !isClaimed && (
                 <div className="claim-button-container">

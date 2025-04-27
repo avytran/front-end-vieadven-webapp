@@ -1,12 +1,8 @@
 import { api } from "./index";
 
-const getPlayerMissions = async (userId) => {
+const getPlayerMission = async (player_id) => {
     try {
-        const response = await api.get('/player-dailymissions', {
-            params: {
-                userId: userId
-            }
-        });
+        const response = await api.get(`/player-dailymissions/${player_id}/missions`);
         return response.data;
     } catch (error) {
         console.error("API Error:", error);
@@ -14,4 +10,4 @@ const getPlayerMissions = async (userId) => {
     }
 }
 
-export { getPlayerMissions }
+export { getPlayerMission }
