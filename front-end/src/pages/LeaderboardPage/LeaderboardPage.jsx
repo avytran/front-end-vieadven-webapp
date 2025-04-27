@@ -1,12 +1,12 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import './Leaderboard.css';
+import './LeaderboardPage.css';
 import { firstRankIcon, secondRankIcon, thirdRankIcon } from '../../assets/images/leaderboard-icons';
 import { vietNamHat } from '../../assets/images/item-icons';
 
 import { getTop10, getRankById } from '../../api/leaderboard.service';
 
 const player_id = "US002";
-export const Leaderboard = () => {
+export const LeaderboardPage = () => {
     const [leaderboard, setLeaderboard] = useState([]);
     const [playerRank, setPlayerRank] = useState([]);
 
