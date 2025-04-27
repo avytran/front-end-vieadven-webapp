@@ -2,13 +2,24 @@
     width: 4vw;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     gap: 1vw;
     box-sizing: border-box;
+    font-family: 'Nunito';
+}
+
+.icon-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.4vw;
+    background-color: #ffd56c4d;
+    border-radius: 50%;
 }
 
 .item-icon{
-    width: 3vw;
-    height: 3vw;
+    width: 2vw;
+    height: 2vw;
 }
 
 .item-container span{
