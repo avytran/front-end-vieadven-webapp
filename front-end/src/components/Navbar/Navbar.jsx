@@ -2,9 +2,12 @@ import React from 'react';
 import "./Navbar.css";
 import { NavLink } from 'react-router-dom';
 import { navbarContents } from '../../constants';
-import { logo, logout } from '../../assets/images/navbar-icons';
+import { logo, logoutIcon } from '../../assets/images/navbar-icons';
+import { useAuth } from '../../context/useAuth';
 
 export const Navbar = () => {
+  const { logout } = useAuth();
+  
   return (
     <nav>
       <img className="navbar-logo" src={logo} alt="VieAdven" />
@@ -20,12 +23,13 @@ export const Navbar = () => {
           })
         }
       </div>
-      <NavbarItem
-        className="navbar-logout"
-        to="/logout"
-        label="Đăng xuất"
-        icon={logout}
-      />
+      <div className="navbar-logout" onClick={logout}>
+        <NavbarItem
+          to="/login"
+          label="Đăng xuất"
+          icon={logoutIcon}
+        />
+      </div>
     </nav>
   )
 }

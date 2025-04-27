@@ -9,16 +9,17 @@ import { star, gift } from '../../assets/images/card-icons';
 import { getPlayerProvinceProgress } from '../../api/provinceProgress.service';
 import { getGameplayByUserIdAndProvinceId } from '../../api/gamePlay.service';
 import { getProvinceName } from '../../utils/getProvinceUtil';
+import { useAuth } from '../../context/useAuth';
 
-const player_id = "US002";
 export const ProvinceDetails = ({ gamePlay, setGamePlay, setSelectedLandmarkId, allowedProvince, landmarks, currentProvince, handleResetZoom }) => {
     const [progress, setProgress] = useState({});
+    const { user } = useAuth();
     
     const fetchProvinceProgress = useCallback(async () => {
         try {
-            const gameplayResponse = await getGameplayByUserIdAndProvinceId(currentProvince, player_id)
+            const gameplayResponse = await getGameplayByUserIdAndProvinceId(currentProvince, user.user_id)
             setGamePlay(gameplayResponse.data);
-            const response = await getPlayerProvinceProgress(player_id, currentProvince);
+            const response = await getPlayerProvinceProgress(user.user_id, currentProvince);
             setProgress(response.data);
 
             console.log(response.data);

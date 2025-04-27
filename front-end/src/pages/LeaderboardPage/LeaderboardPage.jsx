@@ -2,19 +2,19 @@ import React, { useCallback, useEffect, useState } from 'react';
 import './LeaderboardPage.css';
 import { firstRankIcon, secondRankIcon, thirdRankIcon } from '../../assets/images/leaderboard-icons';
 import { vietNamHat } from '../../assets/images/item-icons';
-
+import { useAuth } from '../../context/useAuth';
 import { getTop10, getRankById } from '../../api/leaderboard.service';
 
-const player_id = "US002";
 export const LeaderboardPage = () => {
     const [leaderboard, setLeaderboard] = useState([]);
     const [playerRank, setPlayerRank] = useState([]);
+    const { user } = useAuth();
 
     const fetchData = useCallback(async () => {
         const top10Response = await getTop10();
         setLeaderboard(top10Response.data);
         
-        const playerRankResponse = await getRankById(player_id);
+        const playerRankResponse = await getRankById(user.user_id);
         setPlayerRank(playerRankResponse.data[0]);
 
     }, [])

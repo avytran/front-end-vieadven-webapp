@@ -17,12 +17,13 @@ import { getPlayerMission } from '../../api/getPlayerMission.service';
 import { getAllowedProvinces } from '../../api/province.service';
 import { getPlayerItem } from '../../api/playerItem.service';
 import { getGameplayByUserIdAndProvinceId } from '../../api/gamePlay.service';
-//for testing
-const player_id = "US002";
+import { useAuth } from '../../context/useAuth';
+
 
 export const HomePage = () => {
+  const { user } = useAuth();
   const navigate = useNavigate();
-
+  
   const [chartOptions, setChartOptions] = useState();
   const [latestGameplay, setLatestGameplay] = useState([]);
   const [gamePlay, setGamePlay] = useState([]);
@@ -34,16 +35,16 @@ export const HomePage = () => {
 
   const fetchData = useCallback(async () => {
     try {
-      const responseProvinces = await getAllowedProvinces(player_id);
+      const responseProvinces = await getAllowedProvinces(user.user_id);
       setAllowedProvinces(responseProvinces.data);
 
-      const itemResponse = await getPlayerItem(player_id);
+      const itemResponse = await getPlayerItem(user.user_id);
       setItem(itemResponse.data[0]);
 
-      const missionResponse = await getPlayerMission(player_id);
+      const missionResponse = await getPlayerMission(user.user_id);
       setMission(missionResponse.data[0]);
 
-      const latestGameplayResponse = await getGameplayByUserIdAndProvinceId(responseProvinces.data[responseProvinces.data.length - 1].province_id, player_id)
+      const latestGameplayResponse = await getGameplayByUserIdAndProvinceId(responseProvinces.data[responseProvinces.data.length - 1].province_id, user.user_id)
       setLatestGameplay(latestGameplayResponse.data);
       
 
@@ -138,7 +139,8 @@ export const HomePage = () => {
     ],
   }), [allowedProvinces]);
 
-  if (!allowedProvinces.length) return;
+  if (!allowedProvinces?.length) return;
+
 
   const onClose = () => {
     setSelectedLandmarkId("");

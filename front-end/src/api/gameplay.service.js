@@ -1,20 +1,5 @@
 import { api } from "./index";
 
-const getGamePlay = async (userId, landmarkId) => {
-    try {
-        const response = await api.get('/gameplay', {
-            data: {
-                userId,
-                landmarkId
-            }
-        });
-        return response.data;
-    } catch (error) {
-        console.error("API Error:", error);
-        return [];
-    }
-}
-
 const getGameplayByUserIdAndProvinceId = async (province_id, user_id) => {
     try {
         console.log(`/gameplays/${province_id}/user/${user_id}`);
@@ -38,4 +23,4 @@ const updateGamePlay = async (player_id, landmark_id, score) => {
     }
 }
 
-export { getGamePlay, getGameplayByUserIdAndProvinceId, updateGamePlay }
+export { getGameplayByUserIdAndProvinceId, updateGamePlay }
