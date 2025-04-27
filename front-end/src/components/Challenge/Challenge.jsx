@@ -1,16 +1,38 @@
-import React, { useState } from 'react';
+import React, { useCallback, useEffect, useState, useMemo } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 import './Challenge.css';
 import questionsData from '../../mocks/data/questions.json';
+import { getQuestionsAnswer } from '../../api/questionAnswer.service';
+import { updateGamePlay } from '../../api/gamePlay.service';
+
+const player_id = "US002";
+const colors = ['#FFD56C', '#1DB973', '#23D3FF', '#FF5E8C'];
 
 export const Challenge = () => {
+    const { landmark_id } = useParams(); 
+    const navigate = useNavigate();
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [selectedOption, setSelectedOption] = useState(null);
     const [result, setResult] = useState(null);
     const [progress, setProgress] = useState(0);
+    const [score, setScore] = useState(0);
+    const [questions, setQuestions] = useState([]);
 
-    const currentQuestion = questionsData[currentQuestionIndex];
+    const fetchData = useCallback(async () => {
+        try {
+            const qandAResponse = await getQuestionsAnswer(landmark_id);
+            setQuestions(qandAResponse);
+        } catch (error) {
+            console.error("Error fetching questions:", error);
+        }
+        
+    }, [landmark_id])
 
-    const colors = ['#FFD56C', '#1DB973', '#23D3FF', '#FF5E8C'];
+    useEffect(() => {
+        fetchData();
+    }, [fetchData])
+
+    const currentQuestion = useMemo(() => questions?.[currentQuestionIndex], [currentQuestionIndex, questions]);
 
     const handleOptionClick = (id) => {
         if (result) return;
@@ -19,9 +41,10 @@ export const Challenge = () => {
 
     const handleChoose = () => {
         if (!selectedOption) return;
-        const isCorrect = selectedOption === currentQuestion.correctAnswer;
+        const isCorrect = selectedOption === currentQuestion.answers.find(item => item.is_correct).answer_id;
         setResult(isCorrect ? 'correct' : 'incorrect');
         if (isCorrect) {
+            setScore(prev => prev + 1);
             setSelectedOption(null);
         } else {
             setSelectedOption(currentQuestion.correctAnswer);
@@ -37,7 +60,7 @@ export const Challenge = () => {
         setProgress(progressPercent);
     };
 
-    const handleNext = () => {
+    const handleNext = async () => {
         if (currentQuestionIndex < questionsData.length - 1) {
             setCurrentQuestionIndex(currentQuestionIndex + 1);
             setSelectedOption(null);
@@ -47,6 +70,8 @@ export const Challenge = () => {
         } else {
             console.log("Quiz completed!");
             setProgress(100);
+            await updateGamePlay(player_id, landmark_id, score);
+            navigate(`/landmark/${landmark_id}/completed`)
         }
     };
 
@@ -78,24 +103,24 @@ export const Challenge = () => {
             </div>
 
             <div className="question-placeholder">
-                {currentQuestion.question}
+                {currentQuestion?.content}
             </div>
 
             <div className="options-grid">
-                {currentQuestion.options.map((option, index) => (
+                {currentQuestion?.answers?.map((option, index) => (
                     <div
-                        key={option.id}
-                        className={`option-box ${selectedOption === option.id ? 'selected' : ''}
-                            ${result && option.id === currentQuestion.correctAnswer ? 'correct' : ''}
-                            ${result && selectedOption === option.id && option.id !== currentQuestion.correctAnswer ? 'incorrect' : ''}`}
+                        key={option.answer_id}
+                        className={`option-box ${selectedOption === option.answer_id ? 'selected' : ''}
+                            ${result && option.is_correct ? 'correct' : ''}
+                            ${result && selectedOption === option.answer_id && !option.is_correct ? 'incorrect' : ''}`}
                         style={{
                             backgroundColor: result
-                                ? (option.id === currentQuestion.correctAnswer ? '#00CED1' : '#808080')
+                                ? (option.answer_id === option.is_correct ? '#00CED1' : '#808080')
                                 : colors[index]
                         }}
-                        onClick={() => handleOptionClick(option.id)}
+                        onClick={() => handleOptionClick(option.answer_id)}
                     >
-                        {option.text}
+                        {option.content}
                     </div>
                 ))}
             </div>
@@ -108,7 +133,7 @@ export const Challenge = () => {
                             {result === 'correct' ? 'Đúng rồi!' : 'Đáp án đúng:'}
                             {result !== 'correct' && (
                                 <span className="correct-answer">
-                                    {" " + currentQuestion.options.find(opt => opt.id === currentQuestion.correctAnswer).text}
+                                    {" " + currentQuestion.answers.find(opt => opt.is_correct).content}
                                 </span>
                             )}
                         </div>

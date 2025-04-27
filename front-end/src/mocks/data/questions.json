@@ -3,44 +3,20 @@
       "id": 1,
       "question": "Đèo nào nổi tiếng ở Hà Giang?",
       "options": [
-        { "id": 1, "text": "Đèo Hải Vân" },
-        { "id": 2, "text": "Đèo Ngang" },
-        { "id": 3, "text": "Đèo Mã Pí Lèng" },
-        { "id": 4, "text": "Đèo Ô Quy Hồ" }
-      ],
-      "correctAnswer": 3
+        { "answer_id": "1", "content": "Đèo Hải Vân", "is_correct": true },
+        { "answer_id": "2", "content": "Đèo Ngang", "is_correct": false },
+        { "answer_id": "3", "content": "Đèo Mã Pí Lèng", "is_correct": false },
+        { "answer_id": "4", "content": "Đèo Ô Quy Hồ", "is_correct": false }
+      ]
     },
     {
       "id": 2,
       "question": "Hồ Hoàn Kiếm nằm ở tỉnh/thành phố nào?",
       "options": [
-        { "id": 1, "text": "Hà Nội" },
-        { "id": 2, "text": "Huế" },
-        { "id": 3, "text": "Đà Nẵng" },
-        { "id": 4, "text": "Hồ Chí Minh" }
-      ],
-      "correctAnswer": 1
-    },
-    {
-      "id": 3,
-      "question": "Vịnh Hạ Long thuộc tỉnh nào của Việt Nam?",
-      "options": [
-        { "id": 1, "text": "Hải Phòng" },
-        { "id": 2, "text": "Quảng Ninh" },
-        { "id": 3, "text": "Thanh Hóa" },
-        { "id": 4, "text": "Nghệ An" }
-      ],
-      "correctAnswer": 2
-    },
-    {
-      "id": 4,
-      "question": "Cố đô Huế nằm ở tỉnh nào?",
-      "options": [
-        { "id": 1, "text": "Quảng Nam" },
-        { "id": 2, "text": "Quảng Bình" },
-        { "id": 3, "text": "Thừa Thiên-Huế" },
-        { "id": 4, "text": "Quảng Trị" }
-      ],
-      "correctAnswer": 3
+        { "answer_id": "1", "content": "Hà Nội", "is_correct": true },
+        { "answer_id": "2", "content": "Huế", "is_correct": false },
+        { "answer_id": "3", "content": "Đà Nẵng", "is_correct": false },
+        { "answer_id": "4", "content": "Hồ Chí Minh", "is_correct": false }
+      ]
     }
   ]
