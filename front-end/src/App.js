@@ -3,6 +3,9 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { MainLayout } from './layouts/MainLayout';
 import { LeaderboardPage } from './pages/LeaderboardPage';
 import { HomePage } from './pages/HomePage';
+import { LogInPage } from './pages/LoginPage';
+import { RegisterPage } from './pages/RegisterPage';
+import { RequireAuth } from './components/RequireAuth';
 import { MissionPage } from './pages/MissionPage';
 
 function App() {
@@ -11,10 +14,17 @@ function App() {
       <Router>
         <div className="root-container">
           <Routes>
-            <Route element={<MainLayout />}>
-              <Route path="/" element={<HomePage />} />
-              <Route path="/leaderboard" element={<LeaderboardPage />} />
-              <Route path="/mission" element={<MissionPage />} />
+            {/* Public route */}
+            <Route path="/login" element={<LogInPage />} />
+            <Route path="/register" element={<RegisterPage />} />
+
+            {/* Protected routes */}
+            <Route element={<RequireAuth />}>
+              <Route element={<MainLayout />}>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/leaderboard" element={<LeaderboardPage />} />
+                <Route path="/mission" element={<MissionPage />} />
+              </Route>
             </Route>
           </Routes>
         </div>

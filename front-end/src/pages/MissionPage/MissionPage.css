@@ -5,36 +5,36 @@
     font-family: 'Nunito';
   }
   
-  .header {
+  .daily-container .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
   }
   
-  .header h1 {
+  .daily-container .header h1 {
     font-size: 24px;
     font-weight: bold;
     color: #333;
   }
   
-  .counters {
+  .daily-container .counters {
     display: flex;
     gap: 16px;
   }
   
-  .counter {
+  .daily-container .counter {
     display: flex;
     align-items: center;
   }
   
-  .icon-image {
+  .daily-container .icon-image {
     width: 100%;
     height: 100%;
     object-fit: contain;
   }
   
-  .flame-container {
+  .daily-container .flame-container {
     background-color: #fff3e0;
     padding: 8px;
     border-radius: 50%;
@@ -45,14 +45,14 @@
     justify-content: center;
   }
   
-  .flame-count {
+  .daily-container .flame-count {
     color: #ff7043;
     font-size: 24px;
     font-weight: bold;
     margin-left: 8px;
   }
   
-  .Vietnam_hat-container {
+  .daily-container .Vietnam_hat-container {
     background-color: #fff8e1;
     padding: 8px;
     border-radius: 50%;
@@ -63,24 +63,24 @@
     align-items: center;
   }
   
-  .Vietnam_hat-count {
+  .daily-container .Vietnam_hat-count {
     color: #ffca28;
     font-size: 24px;
     font-weight: bold;
     margin-left: 8px;
   }
   
-  .content {
+  .daily-container .content {
     display: grid;
     grid-template-columns: 1fr 300px;
     gap: 20px;
   }
   
-  .missions-container {
+  .daily-container .missions-container {
     overflow: hidden;
   }
   
-  .mission-list {
+  .daily-container .mission-list {
     display: flex;
     flex-direction: column;
     gap: 16px;
@@ -89,36 +89,36 @@
     padding-right: 10px;
   }
   
-  .mission-card {
+  .daily-container .mission-card {
     background-color: white;
     border-radius: 8px;
     padding: 16px;
     border: 1px solid #e0e0e0;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.daily-container .05);
   }
   
-  .mission-card.highlighted {
+  .daily-container .mission-card.daily-container .highlighted {
     border: 2px solid #ffca28;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.daily-container .1);
   }
 
-  .mission-card.claimed {
+  .daily-container .mission-card.daily-container .claimed {
     border: 2px solid #4a4a4a48;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.daily-container .1);
     background-color: #f5f5f5;
 
-    .progress-bar-fill{
+    .daily-container .progress-bar-fill{
       background-color: #4a4a4a48;
     }
   }
   
-  .mission-content {
+  .daily-container .mission-content {
     display: flex;
     align-items: center;
     gap: 16px;
   }
   
-  .mission-icon {
+  .daily-container .mission-icon {
     width: 56px;
     height: 56px;
     border-radius: 8px;
@@ -130,17 +130,17 @@
     border: 0px;
   }
   
-  .mission-info {
+  .daily-container .mission-info {
     flex-grow: 1;
   }
   
-  .mission-info h3 {
+  .daily-container .mission-info h3 {
     font-size: 18px;
     font-weight: bold;
     margin-bottom: 10px;
   }
   
-  .progress-bar {
+  .daily-container .progress-bar {
     width: 100%;
     height: 16px;
     background-color: #eeeeee;
@@ -148,20 +148,20 @@
     overflow: hidden;
   }
   
-  .progress-fill {
+  .daily-container .progress-fill {
     height: 100%;
     background-color: #ffca28;
     border-radius: 8px;
   }
   
-  .progress-text {
+  .daily-container .progress-text {
     text-align: right;
     color: #757575;
     font-size: 14px;
     margin-top: 4px;
   }
   
-  .reward-icon {
+  .daily-container .reward-icon {
     width: 40px;
     height: 40px;
     background-color: #fff8e1;
@@ -173,13 +173,13 @@
     overflow: hidden;
   }
   
-  .claim-button-container {
+  .daily-container .claim-button-container {
     display: flex;
     justify-content: center;
     margin-top: 16px;
   }
   
-  .claim-button {
+  .daily-container .claim-button {
     background-color: #fff8e1;
     color: #b78620;
     font-weight: bold;
@@ -189,31 +189,31 @@
     cursor: pointer;
   }
   
-  .claim-button:hover {
+  .daily-container .claim-button:hover {
     background-color: #ffecb3;
   }
   
-  .challenge-section {
+  .daily-container .challenge-section {
     background-color: white;
     border-radius: 8px;
     padding: 20px;
     border: 1px solid #e0e0e0;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.daily-container .05);
     height: fit-content;
   }
   
-  .challenge-section h2 {
+  .daily-container .challenge-section h2 {
     font-size: 20px;
     font-weight: bold;
     margin-bottom: 8px;
   }
   
-  .challenge-section p {
+  .daily-container .challenge-section p {
     color: #757575;
     margin-bottom: 24px;
   }
   
-  .start-button {
+  .daily-container .start-button {
     width: 100%;
     background-color: #e3f2fd;
     color: #2196f3;
@@ -224,21 +224,21 @@
     cursor: pointer;
   }
   
-  .start-button:hover {
+  .daily-container .start-button:hover {
     background-color: #bbdefb;
   }
 
-  .progress-bar-container{
+  .daily-container .progress-bar-container{
     display: flex;
     align-items: center;
 }
   
   @media (max-width: 768px) {
-    .content {
+    .daily-container .content {
       grid-template-columns: 1fr;
     }
     
-    .mission-list {
+    .daily-container .mission-list {
       max-height: none;
     }
   }
